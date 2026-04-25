@@ -1,5 +1,5 @@
 // Конфигурация
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwnYgcqblQvBndki0gHKblM2LFdV658QqekE7f3BkRkmUI8oUX7KK4emtwWhfs8Cw/exec';
 const STORAGE_KEY_MAGAZINS = 'kl_shops';
 const STORAGE_KEY_QUEUE = 'kl_queue';
 const MAX_DISTANCE_METERS = 50; // радиус, в котором считаем, что это тот же магазин
