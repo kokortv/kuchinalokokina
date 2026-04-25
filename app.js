@@ -132,6 +132,12 @@ saveBtn.addEventListener('click', async () => {
         return;
     }
 
+        } catch (e) {
+        console.error(e); // <-- добавить
+        setStatus('Ошибка сохранения: ' + e.message, 'error'); // временно
+        // потом вернем офлайн-логику
+    }
+
     const entry = {
         shop: currentShop.name,
         lat: currentShop.lat,
