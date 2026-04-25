@@ -169,8 +169,8 @@ saveBtn.addEventListener('click', async () => {
 async function sendEntry(entry, retry = true) {
     const response = await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
-        body: JSON.stringify(entry),
-        headers: { 'Content-Type': 'application/json' }
+        body: JSON.stringify(entry)
+        // заголовок Content-Type не указываем => простой запрос, без OPTIONS
     });
     if (!response.ok) throw new Error('Ошибка отправки');
     return response.json();
