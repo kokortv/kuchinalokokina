@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KuchinaLokokina</title>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        :root {
+            --primary: #6b4c3a;
+            --bg: #fdf6f0;
+            --card: #fff;
+        }
+        body {
+            font-family: system-ui, sans-serif;
+            margin: 0;
+            padding: 16px;
+            background: var(--bg);
+            color: #333;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .logo {
+            font-size: 32px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 1.8em;
+            color: var(--primary);
+        }
+        .card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .shop-name {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .photo-area {
+            margin: 16px 0;
+            text-align: center;
+        }
+        #photo {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 12px;
+            display: none;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .status {
+            font-size: 14px;
+            padding: 8px;
+            border-radius: 8px;
+            margin: 8px 0;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="logo">🐌</span>
+            <h1>KuchinaLokokina</h1>
+        </div>
+
+        <div id="status"></div>
+
+        <!-- Карточка магазина -->
+        <div class="card">
+            <div class="shop-name">📍 Магазин</div>
+            <div id="detectedShop">Определяю...</div>
+            <input type="text" id="shopInput" placeholder="Или введи вручную" style="display:none;">
+            <button class="btn-outline" id="changeShopBtn" style="margin-top:8px;">✏️ Указать другой магазин</button>
+        </div>
+
+        <!-- Фото ценника -->
+        <div class="card">
+            <div class="shop-name">📸 Ценник</div>
+            <div class="photo-area">
+                <img id="photo" alt="Ценник">
+                <input type="file" id="photoInput" accept="image/*" capture="environment" style="display:none;">
+            </div>
+            <button class="btn" id="takePhotoBtn">Сфотографировать</button>
+        </div>
+
+        <!-- Данные товара -->
+        <div class="card">
+            <div class="shop-name">📝 Информация о товаре</div>
+            <input type="text" id="originalName" placeholder="Оригинальное название">
+            <input type="text" id="translatedName" placeholder="Перевод на русский (если нужно)">
+            <select id="currency">
+                <option value="₾">₾ Лари</option>
+                <option value="$">$ Доллар</option>
+                <option value="€">€ Евро</option>
+                <option value="₽">₽ Рубль</option>
+            </select>
+            <input type="number" id="price" placeholder="Цена" step="0.01">
+            <input type="text" id="discount" placeholder="Скидка (например, -20%)">
+            <input type="text" id="barcode" placeholder="Штрихкод (если есть)">
+        </div>
+
+        <button class="btn" id="saveBtn">💾 Сохранить в улиточную таблицу</button>
+
+        <!-- История (будет улучшаться) -->
+        <div class="card" style="margin-top:24px;">
+            <div class="shop-name">📋 Последние записи</div>
+            <button class="btn-outline" id="loadHistoryBtn">Загрузить историю</button>
+            <div id="historyList"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
